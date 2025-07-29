@@ -1,0 +1,35 @@
+# Binaries
+/server
+*.exe
+*.out
+
+# Dependency directories (optional if using Go modules)
+vendor/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Environment files
+.env
+
+# Log files
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Go coverage/profile files
+*.cover
+*.test
+
+# Swagger auto-generated docs
+/internal/docs/*
+
+# PostgreSQL dump or temp files (optional)
+*.sql
+*.dump
