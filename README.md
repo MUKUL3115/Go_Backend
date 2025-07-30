@@ -19,15 +19,19 @@ go-backend/
 ├── internal/
 │   ├── api/         # Controllers, DTOs, Routes
 │   ├── auth/        # JWT & middleware
-│   ├── common/      # Logger & utilities
+│   ├── common/      # Logging & helpers
 │   ├── database/    # DB connection
-│   ├── docs/        # Swagger files
+│   ├── docs/        # Swagger docs (auto-generated)
+│   ├── interfaces/  # Interface definitions
 │   ├── models/      # Data models
 │   ├── repositories/# Data access layer
-│   ├── services/    # Business logic layer
-├── test/            # Unit & integration tests
+│   └── services/    # Business logic
+├── test/
+│   ├── unit/        # Unit tests
+│   └── integration/ # Integration tests
 ├── .env             # Environment variables
-├── go.mod / go.sum  # Go dependencies
+├── go.mod / go.sum
+└── README.md
 ```
 
 ---
