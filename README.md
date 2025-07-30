@@ -76,7 +76,7 @@ Visit Swagger UI at:
 
 ---
 
-## 🏥 Health Check
+## Health Check
 
 Hit `/healthz` to verify the service is running.
 
