@@ -1,36 +1,40 @@
 package database
 
 import (
-	"fmt"
 	"log"
 	"os"
-	"go-backend/internal/models"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
+	"go-backend/internal/models"
+
+	"github.com/joho/godotenv"
 )
 
 var DB *gorm.DB
 
 func InitDB() *gorm.DB {
-	host := os.Getenv("DB_HOST")
-	port := os.Getenv("DB_PORT")
-	user := os.Getenv("DB_USER")
-	password := os.Getenv("DB_PASSWORD")
-	dbname := os.Getenv("DB_NAME")
+	// Load .env if present (optional)
+	_ = godotenv.Load()
 
-	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
-
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatalf("Failed to connect to DB: %v", err)
+	dsn := os.Getenv("DATABASE_URL")
+	if dsn == "" {
+		log.Fatal("DATABASE_URL environment variable not set")
 	}
 
+	// Connect using GORM with the postgres driver
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		log.Fatalf("Failed to connect to Supabase DB: %v", err)
+	}
+
+	// Example: Auto-migrate your models
 	err = db.AutoMigrate(&models.User{})
 	if err != nil {
-		log.Fatalf("AutoMigrate failed: %v", err)
+		log.Fatalf("Failed to auto-migrate: %v", err)
 	}
 
 	DB = db
-	return db
+	return DB
 }

@@ -27,8 +27,7 @@ Thumbs.db
 *.cover
 *.test
 
-# Swagger auto-generated docs
-/internal/docs/*
+
 
 # PostgreSQL dump or temp files (optional)
 *.sql
